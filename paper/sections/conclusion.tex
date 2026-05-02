@@ -1,13 +1,26 @@
 % To allow compilation of the file
 % !TeX root = ./../article.tex
 
-\section{Conclusion}
+\section{Conclusion and Outlook}
 
-We presented a protocol and artifact for federated elections in which local
-tallies remain encrypted, accepted submissions are proof-checked and signed,
-the aggregate is maintained on-chain, and only the final global tally is
-opened. The construction is intentionally narrower than a full remote voting
-system: local vote secrecy and local counting remain outside the protocol
-boundary. Within that boundary, the artifact shows that encrypted local
-tallies, transcript inclusion, homomorphic aggregation, and proof-checked
-threshold opening can be combined in a reproducible on-chain workflow.
+\paragraph{Origin.}
+The project started from the Koine/XRPL federated-election scenario: local
+committees already preserve ballot secrecy and count local votes, while the
+unresolved risk is the central actor who collects tallies and announces the
+final result. This led us to focus on federation-wide aggregation integrity
+rather than replacing local voting.
+
+\paragraph{Approach.}
+The protocol separates local tallying from public aggregation. Local
+authorities publish signed encrypted tally vectors with validity proofs; the
+contract accepts one proof-checked submission per authority, maintains the
+homomorphic aggregate, and verifies the threshold-opening transcript before
+the global result is recovered.
+
+\paragraph{Product path.}
+The artifact suggests a practical route for institutional governance systems,
+provided deployment engineering is added, including operational key
+management, audited contracts and circuits, authority onboarding, monitoring,
+and interfaces for administrators. The present contribution remains a research
+prototype, but it demonstrates a reproducible workflow for private local
+tallies and verifiable global aggregation.
