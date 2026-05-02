@@ -1,7 +1,7 @@
 # Encrypted Local Tally Integrity
 
-This repository is a standalone Koine submission package for federated
-election integrity with encrypted local tallies.
+This repository is the public Koine submission package for federated election
+integrity with encrypted local tallies.
 
 The package is intentionally narrow:
 
@@ -38,6 +38,15 @@ yarn install
 yarn validate
 ```
 
+## Authors
+
+- Vincenzo Imperati, Sapienza University of Rome, Italy,
+  `imperati@di.uniroma1.it`
+- Lorenzo Camilli, Sapienza University of Rome, Italy,
+  `camilli@di.uniroma1.it`
+- Raffaele Ruggeri, Sapienza University of Rome, Italy,
+  `ruggeri@di.uniroma1.it`
+
 ## Editorial Positioning
 
 This package presents a paper and artifact for federated tally integrity under
@@ -67,8 +76,26 @@ The artifact is intentionally a research artifact rather than a deployment
 product. It demonstrates the full workflow and its security motivation without
 introducing a frontend.
 
-## Public Artifact Link
+## Validation Status
 
-The companion artifact is published at:
+- paper: `paper/article.pdf`, validated as a 5-page Koine article
+- artifact: validation passed on 2026-05-02; run `yarn validate` with the
+  Node version declared in `artifact/.nvmrc`
+- validation covers circuit generation, contract tests, and deterministic
+  replay against `artifact/expected/replay-summary.expected.json`
+
+## Citation
+
+Artifact citation metadata is available in `artifact/CITATION.cff`.
+
+## License
+
+The artifact code is released under the MIT License; see `artifact/LICENSE`.
+The paper is Koine submission material prepared for publication with the
+submitted contribution.
+
+## Public Repository
+
+The paper and companion artifact are published at:
 
 https://github.com/VincenzoImp/encrypted-local-tally-integrity
