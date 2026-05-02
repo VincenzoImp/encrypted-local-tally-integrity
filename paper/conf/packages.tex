@@ -1,0 +1,28 @@
+% To allow compilation of the file
+% !TeX root = ./../article.tex
+
+
+% --- Insert the required packages here ---
+
+
+
+
+
+% De Cifris Mantadory Packages and Macros
+% --- --- DO NOT MODIFY --- ---
+
+\RequirePackage{orcidlink}
+\renewcommand{\orcidID}[1]{\orcidlink{#1}}
+
+\usepackage[nameinlink,capitalize]{cleveref} 
+
+\providecommand\freefootnote[1]{%
+	\begingroup\renewcommand{\thefootnote}{}\phantom{\footnotemark}%
+	\footnotetext{#1}\endgroup\setcounter{footnote}{0}%
+}
+
+\ifstandalone
+	\RequirePackage[inline]{enumitem}
+	\RequirePackage[a5paper , textwidth=5in , textheight=7in]{geometry}
+	\providecommand{\paperfooter}{DeCifris Template -- Contribution }
+\fi

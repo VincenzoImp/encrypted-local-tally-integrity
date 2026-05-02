@@ -1,0 +1,32 @@
+{
+  "name": "zk-encrypted-local-tally-artifact",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=22.0.0 <23.0.0"
+  },
+  "scripts": {
+    "compile": "node scripts/buildCircuits.mjs && hardhat compile",
+    "circuits:build": "node scripts/buildCircuits.mjs",
+    "test": "node scripts/buildCircuits.mjs && hardhat test",
+    "replay": "node scripts/buildCircuits.mjs && hardhat run scripts/replayScenario.js",
+    "validate": "node scripts/runValidation.mjs",
+    "clean": "rm -rf cache artifacts logs circuits/build"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "5.3.0",
+    "circomlib": "2.0.5",
+    "circomlibjs": "0.1.7",
+    "ffjavascript": "0.3.1",
+    "snarkjs": "0.7.6"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "2.0.8",
+    "@nomicfoundation/hardhat-ethers": "3.0.8",
+    "@nomicfoundation/hardhat-network-helpers": "1.0.12",
+    "chai": "4.5.0",
+    "ethers": "6.13.7",
+    "hardhat": "2.23.0"
+  }
+}

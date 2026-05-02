@@ -1,0 +1,29 @@
+% To allow compilation of the file
+% !TeX root = ./../article.tex
+
+\begin{abstract}
+
+We study federated elections in which voting remains secret and counted
+locally, but the global result must be derived from all local tallies without
+trusting a central coordinator and without exposing local outcomes. Publishing
+local tallies in the clear fixes inclusion but leaks sensitive local political
+information; commit-and-reveal only delays that leakage and still leaves a
+final-stage abort surface. We present a blockchain-assisted protocol in which
+each authority submits an \emph{encrypted} local tally vector together with a
+Groth16 proof that the hidden tally is structurally valid: ciphertexts are
+well formed, entries are non-negative, and the vector sums to the public local
+electorate size. Authorities also sign the submission transcript, so accepted
+ciphertexts are bound to the current election state. The contract verifies the
+local-tally proof, records one signed submission per authority, and maintains
+the homomorphic aggregate on-chain; separate proofs check trustee setup and
+threshold opening. Only the global tally is recovered at the end. We provide a
+reproducible artifact with a Solidity contract, three Circom circuits, and an
+end-to-end replay of accepted submissions, on-chain aggregation, and final
+tally recovery without ever revealing local tallies.
+
+\begin{keywords}
+Federated elections \and Tally integrity \and Zero-knowledge proofs \and
+Homomorphic aggregation
+\end{keywords}
+
+\end{abstract}

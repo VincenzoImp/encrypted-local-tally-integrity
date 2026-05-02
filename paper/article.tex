@@ -1,0 +1,71 @@
+% ---------------------------------------------------------------------------
+% De Cifris Template -- Version 1.0 -- 2026 Jan 01
+% ---------------------------------------------------------------------------
+
+% --- --- DO NOT MODIFY HERE --- ---
+\expandafter\ifx\csname ifstandalone\endcsname\relax
+\expandafter\newif\csname ifstandalone\endcsname
+\expandafter\ifx\csname @twoclasseserror\endcsname\documentclass
+\else\standalonetrue\fi\fi
+
+\documentclass[runningheads,10pt]{llncs}
+
+% ---------------------------------------------------------------------------
+% --- Modify the template only when specified ---
+% ---------------------------------------------------------------------------
+
+% --- --- DO NOT MODIFY HERE --- ---
+\input{conf/packages}
+
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+
+\begin{document}
+
+% --- --- DO NOT MODIFY HERE --- ---
+\input{conf/macro}
+
+% ---------------------------------------------------------------------------
+% Paper Information
+
+\titlerunning{Encrypted Local Tallies and On-Chain Aggregation}
+\title{Federated Elections with Encrypted Local Tallies and Verifiable On-Chain Aggregation}
+\hypersetup{
+	pdftitle={Federated Elections with Encrypted Local Tallies and Verifiable On-Chain Aggregation},
+	pdfauthor={Vincenzo Imperati, Lorenzo Camilli, Raffaele Ruggeri},
+	pdfsubject={Blockchain-assisted integrity for federated elections with encrypted local tallies and zero-knowledge proofs},
+	pdfkeywords={federated elections, encrypted local tallies, zero-knowledge proofs, blockchain bulletin board, tally integrity}
+}
+
+\authorrunning{V. Imperati et al.}
+\author{
+	Vincenzo Imperati\inst{1}
+	\and
+	Lorenzo Camilli\inst{1}
+	\and
+	Raffaele Ruggeri\inst{1}
+}
+
+\institute{
+	Sapienza University of Rome, Italy\\
+	\email{imperati@di.uniroma1.it, camilli@di.uniroma1.it, ruggeri@di.uniroma1.it}
+}
+
+% ---------------------------------------------------------------------------
+% --- --- DO NOT MODIFY HERE --- ---
+\maketitle\freefootnote{\paperfooter}
+% ---------------------------------------------------------------------------
+
+% Content of the paper
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/model}
+\input{sections/protocol}
+\input{sections/artifact}
+
+% ---------------------------------------------------------------------------
+
+\bibliographystyle{splncs04}
+\bibliography{biblio/cryptobib/abbrev3,biblio/cryptobib/crypto_custom,biblio/bibliography}
+
+\end{document}

@@ -1,0 +1,20 @@
+{
+  "electionId": 1,
+  "authorityCount": 3,
+  "acceptedSubmissionCount": 3,
+  "allProofsVerifiedOffChain": true,
+  "allSubmissionSignaturesVerified": true,
+  "allShareProofsVerifiedOffChain": true,
+  "localTalliesNeverPublished": true,
+  "trusteeRegistryVerifiedOnChain": true,
+  "encryptedTalliesVerifiedOnChain": true,
+  "partialDecryptionsVerifiedOnChain": true,
+  "aggregatedFromTranscript": true,
+  "onChainAggregateMatchesTranscript": true,
+  "decryptionTranscriptAnchoredOnChain": true,
+  "threshold": 2,
+  "phase": "ReadyForDecryption",
+  "transcriptCommitmentsMatch": true,
+  "aggregateTallies": [35, 29],
+  "winningCandidates": ["Alice"]
+}

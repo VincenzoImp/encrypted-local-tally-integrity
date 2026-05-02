@@ -1,0 +1,40 @@
+% To allow compilation of the file
+% !TeX root = ./../article.tex
+
+\section{System Model and Attacks}
+
+The protocol has four roles. The \emph{owner} initializes the election and the
+authority registry. Each \emph{local authority} computes its local tally
+off-chain and submits one encrypted tally vector. The \emph{smart contract}
+acts as the public bulletin board and proof gate. A small set of
+\emph{trustees} performs threshold decryption of the final aggregate.
+
+Our assumptions are deliberately narrow. Ballots remain secret inside each
+authority, local counting is outside the protocol boundary, electorate sizes
+are known to the contract, and the final result must be derived from the full
+set of accepted local tallies rather than from a coordinator's private view.
+We add one privacy requirement that cleartext bulletin boards do not satisfy:
+local tallies should remain confidential even after the election.
+
+These assumptions yield five attack classes: \emph{omission and replacement} by
+a coordinator; \emph{strategic observation} if local tallies become visible too
+early; \emph{local retaliation} if local tallies remain public after the
+election; \emph{malformed encrypted submissions} that hide negative, oversized,
+or wrong-sum tallies; and \emph{opening inconsistencies} in which either the
+trustee registry is not consistent with the election public key or the
+decryption transcript contains invalid shares.
+
+The protocol addresses omission and replacement through encrypted submission and
+transcript inclusion, and it addresses strategic observation and local
+retaliation by ensuring that local tallies are never revealed and that only the
+final aggregate is opened. Malformed encrypted submissions are excluded through
+zero-knowledge proofs, while opening inconsistencies are constrained through
+signed submission binding and proof-checked setup and opening transcripts for
+trustees.
+
+The remaining limitations are explicit. A proof of \emph{well-formedness} is
+not a proof that the encrypted tally is the \emph{true} local tally, so a
+fully corrupted local committee remains outside scope. The artifact also uses
+a dealer-generated threshold key rather than distributed key generation, and
+final message decoding after threshold opening is performed off-chain through
+bounded discrete-log recovery.

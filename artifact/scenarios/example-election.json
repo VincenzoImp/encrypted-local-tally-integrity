@@ -1,0 +1,26 @@
+{
+  "electionId": 1,
+  "threshold": 2,
+  "trusteeCount": 3,
+  "candidates": ["Alice", "Bob"],
+  "authorities": [
+    {
+      "name": "Authority A",
+      "localElectorateSize": 20,
+      "counts": [12, 8],
+      "randomnesses": ["101", "202"]
+    },
+    {
+      "name": "Authority B",
+      "localElectorateSize": 24,
+      "counts": [9, 15],
+      "randomnesses": ["303", "404"]
+    },
+    {
+      "name": "Authority C",
+      "localElectorateSize": 20,
+      "counts": [14, 6],
+      "randomnesses": ["505", "606"]
+    }
+  ]
+}

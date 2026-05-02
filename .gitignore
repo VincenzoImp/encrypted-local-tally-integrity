@@ -1,0 +1,11 @@
+**/node_modules/
+artifact/artifacts/
+artifact/cache/
+artifact/circuits/build/
+artifact/logs/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+

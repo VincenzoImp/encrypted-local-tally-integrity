@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite it using the metadata below."
+title: "Artifact for Federated Elections with Encrypted Local Tallies and Verifiable On-Chain Aggregation"
+type: software
+version: 1.0.0
+date-released: 2026-04-20
+license: MIT
+repository-code: "https://github.com/VincenzoImp/encrypted-local-tally-integrity"
+authors:
+  - family-names: Imperati
+    given-names: Vincenzo
+    affiliation: "Sapienza University of Rome"
+    email: imperati@di.uniroma1.it
+  - family-names: Camilli
+    given-names: Lorenzo
+    affiliation: "Sapienza University of Rome"
+    email: camilli@di.uniroma1.it
+  - family-names: Ruggeri
+    given-names: Raffaele
+    affiliation: "Sapienza University of Rome"
+    email: ruggeri@di.uniroma1.it
+abstract: >-
+  Reproducible research artifact for a protocol that combines encrypted local
+  tallies, zero-knowledge validity proofs, on-chain homomorphic aggregation,
+  trustee-set verification, and threshold final opening in federated elections.
+keywords:
+  - federated elections
+  - encrypted local tallies
+  - zero-knowledge proofs
+  - homomorphic aggregation
+  - blockchain

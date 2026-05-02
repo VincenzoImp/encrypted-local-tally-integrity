@@ -1,0 +1,35 @@
+% To allow compilation of the file
+% !TeX root = ./../article.tex
+
+\section{Implementation and Artifact}
+
+The companion artifact for this paper is published in the accompanying
+repository at
+\url{https://github.com/VincenzoImp/encrypted-local-tally-integrity}. It contains a
+Solidity contract that registers authorities,
+verifies Groth16 proofs on-chain, fixes the encrypted-tally transcript,
+maintains the aggregate ciphertext, and anchors both the trustee setup and the
+final opening transcript. It also contains three Circom circuits: one for
+encrypted local tally validity, one for trustee-registry consistency with the
+election public key, and one for partial decryption share validity.
+
+The end-to-end replay generates real proofs for all three stages, submits
+signed encrypted local tallies, reconstructs the aggregate from the stored
+transcript, checks that this reconstruction matches the on-chain aggregate, and
+recovers the final tally.
+
+The artifact's reviewer entry point is \texttt{yarn validate}. That
+command first rebuilds the circuit artifacts if needed, then runs the contract
+test suite, and finally executes the end-to-end replay. The canonical replay
+scenario instantiates a two-candidate election with a $2$-of-$3$ trustee
+committee and a dealer-generated threshold key. It contains three authorities
+with electorate sizes $20$, $24$, and $20$, and hidden local tallies $(12,8)$,
+$(9,15)$, and $(14,6)$ respectively. The resulting global tally is $(35,29)$,
+so the winner is Alice.
+
+The most important property the artifact demonstrates is that the local tallies
+are never published in clear. What becomes public is only the accepted
+ciphertext transcript, the fact that each ciphertext passed a well-formedness
+proof and a signed submission check, the trustee-setup transcript, the verified
+decryption-share transcript, and the final aggregate after threshold
+decryption.

@@ -1,0 +1,61 @@
+% To allow compilation of the file
+% !TeX root = ./../article.tex
+
+\section{Introduction}
+
+We study federated elections in which authorized local authorities conduct
+secret local voting and compute local tallies off-chain. Ballot secrecy is
+already enforced locally and local committees are assumed to count correctly.
+The weak point is the transition from local results to the global result. If a
+central coordinator collects local tallies and announces the winner, that
+actor can omit unfavorable tallies, misreport the aggregate, or exploit early
+knowledge of partial results.
+
+The obvious countermeasure is to publish the local tallies on a blockchain and
+let the final sum be computed from that public bulletin board. This fixes the
+inclusion problem, but it creates a second one. Once a local tally becomes
+public, the corresponding authority can be exposed to retaliation,
+reputational pressure, or strategic bargaining. The problem is especially
+acute in small electorates, where even an aggregate can leak sensitive local
+political information. A commit-and-reveal design is better, but not
+sufficient. It only postpones the disclosure of the local tally, and still
+leaves a final stage in which an authority may refuse to reveal after learning
+enough from the others.
+
+This motivates the central design choice of this paper: \emph{the local tally
+should remain encrypted throughout the protocol}. Each authority should publish a ciphertext
+vector that represents its local tally, together with a proof that the
+ciphertext hides a tally that is structurally valid. In our protocol, the
+authority proves in zero knowledge that each encrypted count is in range and
+that the encrypted vector sums to the public electorate size of that
+authority. The contract accepts only one such ciphertext vector per authority
+and fixes the complete transcript on-chain. The aggregate is then computed
+homomorphically from the accepted ciphertexts, and only the global final tally
+is decrypted.
+
+Our design is closer to open-audit bulletin board systems such as
+Helios~\cite{USENIX:Adida08} than to a ballot-level remote voting stack, but
+it adds three protocol elements that are essential in the private-local-tally
+setting: a proof that each encrypted local tally is structurally valid, an
+on-chain aggregate that is updated from accepted submissions instead of posted
+by a privileged actor, and a proof-checked threshold opening transcript that
+reveals only the final aggregate.
+
+We use curve-based additive ElGamal rather than Paillier~\cite{EC:Paillier99}
+because the artifact is proof-heavy and therefore benefits from aligning encryption with
+Circom/Groth16 arithmetic. This keeps the zero-knowledge pipeline
+substantially simpler than a Paillier-based alternative. We also remain at the
+local-tally level because the problem addressed here is final aggregation from
+trusted local counts rather than ballot-level remote voting.
+
+The paper makes three contributions. First, it specifies a protocol for
+federated elections with encrypted local tallies, signed submission binding,
+proof-based acceptance, on-chain homomorphic aggregation, and threshold final
+opening. Second, it clarifies the attack surface created by visible local
+tallies and shows how encrypted submissions and aggregate-only decryption
+address omission, observation, retaliation, and malformed-input attacks.
+Third, it provides a reproducible artifact that exercises the full workflow
+end to end: trustee-set setup, encrypted tally submission, on-chain
+aggregation, on-chain validation of partial decryptions, and final tally
+recovery. The protocol remains narrower than a full remote voting system, but
+stronger than a cleartext local-tally bulletin board.
