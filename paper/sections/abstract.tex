@@ -3,10 +3,10 @@
 
 \begin{abstract}
 
-We study federated elections in which voting remains secret and counted
+We study federated elections in which votes remain secret and are counted
 locally, but the global result must be derived from all local tallies without
 trusting a central coordinator or exposing local outcomes. Cleartext
-publication fixes inclusion at the cost of local privacy, while
+publication makes inclusion auditable but sacrifices local privacy, while
 commit-and-reveal only delays disclosure. We present a blockchain-assisted
 protocol in which each authority submits an \emph{encrypted} local tally
 vector, a Groth16 proof that the hidden tally is well formed and sums to the
@@ -16,7 +16,7 @@ authority, and maintains the homomorphic aggregate on-chain. Separate proof
 checks cover trustee setup and threshold opening, so only the global tally is
 recovered. We provide a reproducible artifact with a Solidity contract, Circom
 circuits, and an end-to-end replay of accepted submissions, aggregation, and
-final recovery without revealing local tallies.
+final tally recovery without revealing local tallies.
 
 \begin{keywords}
 Federated elections \and Tally integrity \and Zero-knowledge proofs \and

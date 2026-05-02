@@ -16,16 +16,17 @@ set of accepted local tallies rather than from a coordinator's private view.
 We add one privacy requirement that cleartext bulletin boards do not satisfy:
 local tallies should remain confidential even after the election.
 
-These assumptions yield five attack surfaces: \emph{omission and replacement}
-by a coordinator; \emph{strategic observation} before the election closes;
-\emph{local retaliation} after publication; malformed encrypted submissions
-that hide negative, oversized, or wrong-sum tallies; and opening
+These assumptions define five threats: \emph{omission and replacement} by a
+coordinator; \emph{strategic observation} before the election closes;
+\emph{local retaliation} under cleartext publication; malformed encrypted
+submissions that hide negative, oversized, or wrong-sum tallies; and opening
 inconsistencies in the trustee registry or decryption transcript.
 
-The protocol answers these surfaces with complete-set finalization, transcript
-inclusion, and encrypted submissions: local tallies are never revealed, only
-the final aggregate is opened, malformed submissions are excluded through
-zero-knowledge proofs, and trustee setup and opening are proof-checked.
+The protocol addresses these threats with encrypted submissions, transcript
+inclusion, and a finalization rule that cancels incomplete elections: local
+tallies are never revealed, only the final aggregate is opened, malformed
+submissions are excluded through zero-knowledge proofs, and trustee setup and
+opening are proof-checked.
 
 The remaining limitations are explicit. A proof of \emph{well-formedness} is
 not a proof that the encrypted tally is the \emph{true} local tally, so a

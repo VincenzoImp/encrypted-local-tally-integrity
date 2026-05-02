@@ -4,16 +4,16 @@
 \section{Introduction}
 
 We study federated elections in which authorized local authorities conduct
-secret local voting and compute local tallies off-chain. Ballot secrecy is
+secret voting and compute local tallies off-chain. Ballot secrecy is
 already enforced locally and local committees are assumed to count correctly.
 The weak point is the transition from local results to the global result: a
 central coordinator can omit unfavorable tallies, misreport the aggregate, or
 exploit early knowledge of partial results.
 
-Publishing local tallies on a blockchain fixes inclusion but exposes local
-outcomes, which can create retaliation, reputational pressure, or strategic
-bargaining, especially in small electorates. Commit-and-reveal only postpones
-that disclosure and still leaves a final-stage abort surface.
+Publishing local tallies on a blockchain makes inclusion auditable but exposes
+local outcomes, which can create retaliation, reputational pressure, or
+strategic bargaining, especially in small electorates. Commit-and-reveal only
+postpones that disclosure and still leaves a final-stage abort surface.
 
 This motivates the central design choice of this paper: \emph{the local tally
 should remain encrypted throughout the protocol}. Each authority publishes an
