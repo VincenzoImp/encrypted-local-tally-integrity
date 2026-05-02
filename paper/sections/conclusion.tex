@@ -1,0 +1,13 @@
+% To allow compilation of the file
+% !TeX root = ./../article.tex
+
+\section{Conclusion}
+
+We presented a protocol and artifact for federated elections in which local
+tallies remain encrypted, accepted submissions are proof-checked and signed,
+the aggregate is maintained on-chain, and only the final global tally is
+opened. The construction is intentionally narrower than a full remote voting
+system: local vote secrecy and local counting remain outside the protocol
+boundary. Within that boundary, the artifact shows that encrypted local
+tallies, transcript inclusion, homomorphic aggregation, and proof-checked
+threshold opening can be combined in a reproducible on-chain workflow.
