@@ -12,15 +12,18 @@
   "contributors": [
     {
       "name": "Vincenzo Imperati",
-      "email": "imperati@di.uniroma1.it"
+      "email": "imperati@di.uniroma1.it",
+      "url": "https://orcid.org/0009-0001-9437-1384"
     },
     {
       "name": "Lorenzo Camilli",
-      "email": "camilli@di.uniroma1.it"
+      "email": "camilli.1845956@studenti.uniroma1.it",
+      "url": "https://orcid.org/0009-0000-5122-5515"
     },
     {
       "name": "Raffaele Ruggeri",
-      "email": "ruggeri@di.uniroma1.it"
+      "email": "ruggeri.1934646@studenti.uniroma1.it",
+      "url": "https://orcid.org/0009-0000-5833-8424"
     }
   ],
   "packageManager": "yarn@1.22.22",

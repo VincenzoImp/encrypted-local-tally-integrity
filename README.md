@@ -41,11 +41,14 @@ yarn validate
 ## Authors
 
 - Vincenzo Imperati, Sapienza University of Rome, Italy,
-  `imperati@di.uniroma1.it`
+  `imperati@di.uniroma1.it`,
+  ORCID: `0009-0001-9437-1384`
 - Lorenzo Camilli, Sapienza University of Rome, Italy,
-  `camilli@di.uniroma1.it`
+  `camilli.1845956@studenti.uniroma1.it`,
+  ORCID: `0009-0000-5122-5515`
 - Raffaele Ruggeri, Sapienza University of Rome, Italy,
-  `ruggeri@di.uniroma1.it`
+  `ruggeri.1934646@studenti.uniroma1.it`,
+  ORCID: `0009-0000-5833-8424`
 
 ## Editorial Positioning
 

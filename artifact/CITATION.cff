@@ -11,17 +11,17 @@ authors:
     given-names: Vincenzo
     affiliation: "Sapienza University of Rome"
     email: imperati@di.uniroma1.it
-    orcid: "https://orcid.org/0000-0000-0000-0000"
+    orcid: "https://orcid.org/0009-0001-9437-1384"
   - family-names: Camilli
     given-names: Lorenzo
     affiliation: "Sapienza University of Rome"
-    email: camilli@di.uniroma1.it
-    orcid: "https://orcid.org/0000-0000-0000-0000"
+    email: camilli.1845956@studenti.uniroma1.it
+    orcid: "https://orcid.org/0009-0000-5122-5515"
   - family-names: Ruggeri
     given-names: Raffaele
     affiliation: "Sapienza University of Rome"
-    email: ruggeri@di.uniroma1.it
-    orcid: "https://orcid.org/0000-0000-0000-0000"
+    email: ruggeri.1934646@studenti.uniroma1.it
+    orcid: "https://orcid.org/0009-0000-5833-8424"
 abstract: >-
   Reproducible research artifact for a protocol that combines encrypted local
   tallies, zero-knowledge validity proofs, on-chain homomorphic aggregation,
