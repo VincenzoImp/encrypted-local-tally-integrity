@@ -3,12 +3,12 @@
 
 \section{Implementation and Artifact}
 
-The companion artifact is available in the public repository
-\url{https://github.com/VincenzoImp/encrypted-local-tally-integrity}. The
-repository contains a Solidity contract that registers authorities, verifies
-Groth16 proofs on-chain, fixes the encrypted-tally transcript, maintains the
-aggregate ciphertext, and anchors both the trustee setup and the final opening
-transcript. It also contains three Circom circuits~\cite{circom}: one for
+The companion artifact is available in the public repository%
+\footnote{\url{https://github.com/VincenzoImp/encrypted-local-tally-integrity}.}.
+The repository contains a Solidity contract that registers authorities,
+verifies Groth16 proofs on-chain, fixes the encrypted-tally transcript,
+maintains the aggregate ciphertext, and anchors both the trustee setup and the
+final opening transcript. It also contains three Circom circuits~\cite{circom}: one for
 encrypted local tally validity, one for trustee-registry consistency with the
 election public key, and one for partial decryption share validity.
 
