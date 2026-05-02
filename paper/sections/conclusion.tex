@@ -1,7 +1,7 @@
 % To allow compilation of the file
 % !TeX root = ./../article.tex
 
-\section{Discussion and Conclusion}
+\section{Discussion}
 
 \paragraph{Origin.}
 The idea comes from the Cryptography track of the 2024 De Cifris/XRPL Commons
@@ -24,3 +24,11 @@ provided deployment work adds operational key management, audits, authority
 onboarding, monitoring, and administrator interfaces. The present contribution
 remains a research prototype, but it demonstrates a reproducible workflow for
 private local tallies and verifiable global aggregation.
+
+\section{Conclusion}
+
+We presented a blockchain-assisted protocol for deriving a global result from
+encrypted local tallies without exposing local outcomes or trusting a central
+coordinator to compute the aggregate. The accompanying artifact validates the
+core workflow end to end: proof-checked encrypted submissions, deterministic
+on-chain aggregation, and threshold opening of the final tally only.

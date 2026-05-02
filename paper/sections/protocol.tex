@@ -6,9 +6,11 @@
 \paragraph{Setup.}
 The contract records the authorized local authorities, their electorate sizes,
 an election identifier, a trustee set, a decryption threshold, and a public key
-for additively homomorphic ElGamal-style encryption~\cite{ElGamal85}. Before
-the election starts, the owner provides a Groth16 proof that the trustee public
-shares are consistent with the election public key and threshold.
+for additively homomorphic ElGamal-style encryption~\cite{ElGamal85}. The
+artifact instantiates trustee secrets as Shamir-style threshold
+shares~\cite{Shamir79}. Before the election starts, the owner provides a
+Groth16 proof that the trustee public shares are consistent with the election
+public key and threshold.
 
 \paragraph{Encrypted local tally.}
 Authority~$A_i$ computes off-chain counts
