@@ -12,23 +12,14 @@ final opening transcript. It also contains three Circom circuits~\cite{circom}: 
 encrypted local tally validity, one for trustee-registry consistency with the
 election public key, and one for partial decryption share validity.
 
-The end-to-end replay generates real proofs for all three stages, submits
-signed encrypted local tallies, reconstructs the aggregate from the stored
-transcript, checks that this reconstruction matches the on-chain aggregate, and
-recovers the final tally.
-
 The artifact's reviewer entry point is \texttt{yarn validate}. That
-command first rebuilds the circuit artifacts if needed, then runs the contract
-test suite, and finally executes the end-to-end replay. The canonical replay
-scenario instantiates a two-candidate election with a $2$-of-$3$ trustee
-committee and a dealer-generated threshold key. It contains three authorities
-with electorate sizes $20$, $24$, and $20$, and hidden local tallies $(12,8)$,
-$(9,15)$, and $(14,6)$ respectively. The resulting global tally is $(35,29)$,
-so the winner is Alice.
+command rebuilds the circuit artifacts if needed, runs the contract test
+suite, and executes an end-to-end replay with three authorities, a
+two-candidate election, a $2$-of-$3$ trustee committee, and a dealer-generated
+threshold key. The replay generates real proofs, submits signed encrypted
+local tallies, reconstructs the aggregate from the stored transcript, checks
+it against the on-chain aggregate, and recovers the final tally.
 
-The most important property the artifact demonstrates is that the local tallies
-are never published in clear. What becomes public is only the accepted
-ciphertext transcript, the fact that each ciphertext passed a well-formedness
-proof and a signed submission check, the trustee-setup transcript, the verified
-decryption-share transcript, and the final aggregate after threshold
-decryption.
+The local tallies are never published in clear. The public transcript contains
+only accepted ciphertexts, proof and signature checks, trustee setup,
+verified decryption shares, and the final aggregate after threshold opening.

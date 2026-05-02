@@ -6,21 +6,14 @@
 We study federated elections in which authorized local authorities conduct
 secret local voting and compute local tallies off-chain. Ballot secrecy is
 already enforced locally and local committees are assumed to count correctly.
-The weak point is the transition from local results to the global result. If a
-central coordinator collects local tallies and announces the winner, that
-actor can omit unfavorable tallies, misreport the aggregate, or exploit early
-knowledge of partial results.
+The weak point is the transition from local results to the global result: a
+central coordinator can omit unfavorable tallies, misreport the aggregate, or
+exploit early knowledge of partial results.
 
-The obvious countermeasure is to publish the local tallies on a blockchain and
-let the final sum be computed from that public bulletin board. This fixes the
-inclusion problem, but it creates a second one. Once a local tally becomes
-public, the corresponding authority can be exposed to retaliation,
-reputational pressure, or strategic bargaining. The problem is especially
-acute in small electorates, where even an aggregate can leak sensitive local
-political information. A commit-and-reveal design is better, but not
-sufficient. It only postpones the disclosure of the local tally, and still
-leaves a final stage in which an authority may refuse to reveal after learning
-enough from the others.
+Publishing local tallies on a blockchain fixes inclusion but exposes local
+outcomes, which can create retaliation, reputational pressure, or strategic
+bargaining, especially in small electorates. Commit-and-reveal only postpones
+that disclosure and still leaves a final-stage abort surface.
 
 This motivates the central design choice of this paper: \emph{the local tally
 should remain encrypted throughout the protocol}. Each authority should publish a ciphertext
@@ -49,14 +42,10 @@ substantially simpler than a Paillier-based alternative. We also remain at the
 local-tally level because the problem addressed here is final aggregation from
 trusted local counts rather than ballot-level remote voting.
 
-The paper makes three contributions. First, it specifies a protocol for
-federated elections with encrypted local tallies, signed submission binding,
-proof-based acceptance, on-chain homomorphic aggregation, and threshold final
-opening. Second, it clarifies the attack surface created by visible local
-tallies and shows how encrypted submissions and aggregate-only decryption
-address omission, observation, retaliation, and malformed-input attacks.
-Third, it provides a reproducible artifact that exercises the full workflow
-end to end: trustee-set setup, encrypted tally submission, on-chain
-aggregation, on-chain validation of partial decryptions, and final tally
-recovery. The protocol remains narrower than a full remote voting system, but
-stronger than a cleartext local-tally bulletin board.
+The paper specifies a protocol with encrypted local tallies, signed submission
+binding, proof-based acceptance, on-chain homomorphic aggregation, and
+threshold final opening. It also provides a reproducible artifact that
+exercises trustee setup, encrypted tally submission, on-chain aggregation,
+validation of partial decryptions, and final tally recovery. The protocol
+remains narrower than a full remote voting system, but stronger than a
+cleartext local-tally bulletin board.
