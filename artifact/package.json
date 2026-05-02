@@ -1,7 +1,28 @@
 {
   "name": "zk-encrypted-local-tally-artifact",
   "version": "1.0.0",
+  "description": "Reproducible artifact for encrypted local tallies and verifiable on-chain aggregation in federated elections.",
   "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VincenzoImp/encrypted-local-tally-integrity.git",
+    "directory": "artifact"
+  },
+  "contributors": [
+    {
+      "name": "Vincenzo Imperati",
+      "email": "imperati@di.uniroma1.it"
+    },
+    {
+      "name": "Lorenzo Camilli",
+      "email": "camilli@di.uniroma1.it"
+    },
+    {
+      "name": "Raffaele Ruggeri",
+      "email": "ruggeri@di.uniroma1.it"
+    }
+  ],
   "packageManager": "yarn@1.22.22",
   "engines": {
     "node": ">=22.0.0 <23.0.0"

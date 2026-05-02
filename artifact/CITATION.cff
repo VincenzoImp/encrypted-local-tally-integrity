@@ -3,7 +3,7 @@ message: "If you use this artifact, please cite it using the metadata below."
 title: "Artifact for Federated Elections with Encrypted Local Tallies and Verifiable On-Chain Aggregation"
 type: software
 version: 1.0.0
-date-released: 2026-04-20
+date-released: 2026-05-02
 license: MIT
 repository-code: "https://github.com/VincenzoImp/encrypted-local-tally-integrity"
 authors:
@@ -11,14 +11,17 @@ authors:
     given-names: Vincenzo
     affiliation: "Sapienza University of Rome"
     email: imperati@di.uniroma1.it
+    orcid: "https://orcid.org/0000-0000-0000-0000"
   - family-names: Camilli
     given-names: Lorenzo
     affiliation: "Sapienza University of Rome"
     email: camilli@di.uniroma1.it
+    orcid: "https://orcid.org/0000-0000-0000-0000"
   - family-names: Ruggeri
     given-names: Raffaele
     affiliation: "Sapienza University of Rome"
     email: ruggeri@di.uniroma1.it
+    orcid: "https://orcid.org/0000-0000-0000-0000"
 abstract: >-
   Reproducible research artifact for a protocol that combines encrypted local
   tallies, zero-knowledge validity proofs, on-chain homomorphic aggregation,
