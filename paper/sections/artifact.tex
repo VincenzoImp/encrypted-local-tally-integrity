@@ -5,20 +5,19 @@
 
 The companion artifact is available in the public repository%
 \footnote{\url{https://github.com/VincenzoImp/encrypted-local-tally-integrity}.}.
-The repository contains a Solidity contract that registers authorities,
-verifies Groth16 proofs on-chain, fixes the encrypted-tally transcript,
-maintains the aggregate ciphertext, and anchors both the trustee setup and the
-final opening transcript. It also contains three Circom circuits~\cite{circom}: one for
-encrypted local tally validity, one for trustee-registry consistency with the
-election public key, and one for partial decryption share validity.
+The repository contains a Solidity contract for authority registration,
+on-chain Groth16 verification, encrypted-transcript fixation, aggregate
+maintenance, trustee setup, and final opening. It also contains three Circom
+circuits~\cite{circom}: local-tally validity, trustee-registry consistency,
+and partial decryption share validity.
 
-The artifact's reviewer entry point is \texttt{yarn validate}. That
-command rebuilds the circuit artifacts if needed, runs the contract test
-suite, and executes an end-to-end replay with three authorities, a
-two-candidate election, a $2$-of-$3$ trustee committee, and a dealer-generated
-threshold key. The replay generates real proofs, submits signed encrypted
-local tallies, reconstructs the aggregate from the stored transcript, checks
-it against the on-chain aggregate, and recovers the final tally.
+The artifact's reviewer entry point is \texttt{yarn validate}. The command
+rebuilds circuit artifacts if needed, runs the contract tests, and executes an
+end-to-end replay with three authorities, two candidates, a $2$-of-$3$ trustee
+committee, and a dealer-generated threshold key. The replay generates real
+proofs, submits signed encrypted local tallies, reconstructs the aggregate from
+the transcript, checks it against the on-chain aggregate, and recovers the
+final tally.
 
 The local tallies are never published in clear. The public transcript contains
 only accepted ciphertexts, proof and signature checks, trustee setup,

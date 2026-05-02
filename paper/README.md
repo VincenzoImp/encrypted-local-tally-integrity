@@ -37,4 +37,4 @@ The paper is intentionally framed as:
 ## Current Build Status
 
 - final compiled PDF: `article.pdf`
-- validated length: `6 pages`
+- validated length: `5 pages`

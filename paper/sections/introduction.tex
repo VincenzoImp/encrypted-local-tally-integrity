@@ -6,9 +6,9 @@
 We study federated elections in which authorized local authorities conduct
 secret local voting and compute local tallies off-chain. Ballot secrecy is
 already enforced locally and local committees are assumed to count correctly.
-The weak point is the transition from local results to the global result: a central
-coordinator can omit unfavorable tallies, misreport the aggregate, or exploit
-early knowledge of partial results.
+The weak point is the transition from local results to the global result: a
+central coordinator can omit unfavorable tallies, misreport the aggregate, or
+exploit early knowledge of partial results.
 
 Publishing local tallies on a blockchain fixes inclusion but exposes local
 outcomes, which can create retaliation, reputational pressure, or strategic
@@ -30,14 +30,7 @@ local results, an on-chain aggregate updated from accepted submissions, and a
 proof-checked threshold opening transcript that reveals only the final
 aggregate.
 
-We use curve-based additive ElGamal rather than Paillier~\cite{EC:Paillier99}
-because the artifact is proof-heavy and benefits from aligning encryption with
-Circom/Groth16 arithmetic. We remain at the local-tally level because the
-problem addressed here is final aggregation from trusted local counts, not
-ballot-level remote voting.
-
-The paper specifies a protocol with encrypted local tallies, signed submission
-binding, proof-based acceptance, on-chain homomorphic aggregation, and
-threshold final opening. It also provides a reproducible artifact that
-exercises trustee setup, encrypted submission, on-chain aggregation, partial
-decryption validation, and final tally recovery.
+We instantiate encryption with curve-based additive ElGamal, which aligns the
+homomorphic layer with Circom/Groth16 arithmetic. The work remains at the
+local-tally level because the problem addressed here is final aggregation from
+trusted local counts, not ballot-level remote voting.

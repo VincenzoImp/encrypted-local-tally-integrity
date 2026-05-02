@@ -4,13 +4,11 @@
 \section{Protocol Overview}
 
 \paragraph{Setup.}
-The contract records the authorized local authorities, the electorate size of
-each authority, an election identifier, a trustee set with public share
-metadata, a decryption threshold, and a public key for additively homomorphic
-ElGamal-style encryption~\cite{ElGamal85} over a curve group.
-Before the election starts, the owner also provides a Groth16 proof that the
-registered trustee public shares are consistent with the threshold setup
-associated with that election public key~\cite{Shamir79,FOCS:Feldman87}.
+The contract records the authorized local authorities, their electorate sizes,
+an election identifier, a trustee set, a decryption threshold, and a public key
+for additively homomorphic ElGamal-style encryption~\cite{ElGamal85}. Before
+the election starts, the owner provides a Groth16 proof that the trustee public
+shares are consistent with the election public key and threshold.
 
 \paragraph{Encrypted local tally.}
 Authority~$A_i$ computes off-chain counts
@@ -26,26 +24,21 @@ $\pi_i$~\cite{EC:Groth16} for the statement that there exist plaintext counts
 and encryption randomness such that the published ciphertexts encrypt those
 counts, each count is in range, and the sum of the counts equals the public
 electorate size of $A_i$.
-The contract complements that proof with an authority signature on the
-submission transcript. The signature binds the current election identifier,
-authority address, electorate size, and ciphertext coordinates to the sender,
-so the accepted submission is anchored both cryptographically and
-institutionally.
+The authority also signs the transcript, binding the election identifier,
+authority address, electorate size, and ciphertext coordinates to the sender.
 
 \paragraph{On-chain acceptance.}
 The contract accepts exactly one encrypted tally per authorized authority. A
 submission is accepted only if it arrives before the deadline, has not already
 been submitted by that authority, matches the expected public inputs, and
 passes on-chain Groth16 verification. Once accepted, the ciphertext vector is
-part of the immutable transcript and is immediately folded into an on-chain
-aggregate ciphertext maintained by BabyJub point addition.
+fixed in the transcript and folded into an aggregate ciphertext maintained by
+BabyJub point addition.
 
 \paragraph{Deterministic aggregation.}
-No privileged actor posts the aggregate on behalf of everyone else. Instead,
-the contract maintains the component-wise homomorphic sum of accepted
-ciphertexts as submission state evolves. Any observer can reconstruct the same
-aggregate from the accepted authority transcript and compare it with the
-contract-maintained aggregate.
+No privileged actor posts the aggregate. The contract maintains the
+component-wise homomorphic sum of accepted ciphertexts, and any observer can
+recompute the same value from the accepted transcript.
 
 \paragraph{Threshold decryption.}
 Only the aggregate ciphertext is opened. The design follows threshold
@@ -54,9 +47,9 @@ trustees publish a share point together with a Groth16 proof that the share is
 consistent with both the trustee's public share and the corresponding
 contract-maintained ciphertext. The contract accepts only verified shares.
 Once a threshold of valid shares is available, any observer can reconstruct the
-final tally and determine the winner. In the artifact, the last message
-decoding step is performed off-chain through bounded discrete-log recovery,
-while the acceptance of decryption shares is already enforced on-chain.
+final tally and determine the winner. The artifact performs the final bounded
+discrete-log decoding step off-chain, while share acceptance is enforced
+on-chain.
 
 \paragraph{Failure handling.}
 If the submission deadline expires before all authorities have posted an

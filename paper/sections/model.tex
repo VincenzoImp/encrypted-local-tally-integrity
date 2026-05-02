@@ -16,21 +16,16 @@ set of accepted local tallies rather than from a coordinator's private view.
 We add one privacy requirement that cleartext bulletin boards do not satisfy:
 local tallies should remain confidential even after the election.
 
-These assumptions yield five attack classes: \emph{omission and replacement} by
-a coordinator; \emph{strategic observation} if local tallies become visible too
-early; \emph{local retaliation} if local tallies remain public after the
-election; \emph{malformed encrypted submissions} that hide negative, oversized,
-or wrong-sum tallies; and \emph{opening inconsistencies} in which either the
-trustee registry is not consistent with the election public key or the
-decryption transcript contains invalid shares.
+These assumptions yield five attack surfaces: \emph{omission and replacement}
+by a coordinator; \emph{strategic observation} before the election closes;
+\emph{local retaliation} after publication; malformed encrypted submissions
+that hide negative, oversized, or wrong-sum tallies; and opening
+inconsistencies in the trustee registry or decryption transcript.
 
-The protocol addresses omission and replacement through encrypted submission and
-transcript inclusion, and it addresses strategic observation and local
-retaliation by ensuring that local tallies are never revealed and that only the
-final aggregate is opened. Malformed encrypted submissions are excluded through
-zero-knowledge proofs, while opening inconsistencies are constrained through
-signed submission binding and proof-checked setup and opening transcripts for
-trustees.
+The protocol answers these surfaces with complete-set finalization, transcript
+inclusion, and encrypted submissions: local tallies are never revealed, only
+the final aggregate is opened, malformed submissions are excluded through
+zero-knowledge proofs, and trustee setup and opening are proof-checked.
 
 The remaining limitations are explicit. A proof of \emph{well-formedness} is
 not a proof that the encrypted tally is the \emph{true} local tally, so a
