@@ -6,9 +6,9 @@
 We study federated elections in which authorized local authorities conduct
 secret local voting and compute local tallies off-chain. Ballot secrecy is
 already enforced locally and local committees are assumed to count correctly.
-The weak point is the transition from local results to the global result: a
-central coordinator can omit unfavorable tallies, misreport the aggregate, or
-exploit early knowledge of partial results.
+The weak point is the transition from local results to the global result: a central
+coordinator can omit unfavorable tallies, misreport the aggregate, or exploit
+early knowledge of partial results.
 
 Publishing local tallies on a blockchain fixes inclusion but exposes local
 outcomes, which can create retaliation, reputational pressure, or strategic
@@ -16,36 +16,28 @@ bargaining, especially in small electorates. Commit-and-reveal only postpones
 that disclosure and still leaves a final-stage abort surface.
 
 This motivates the central design choice of this paper: \emph{the local tally
-should remain encrypted throughout the protocol}. Each authority should publish a ciphertext
-vector that represents its local tally, together with a proof that the
-ciphertext hides a tally that is structurally valid. In our protocol, the
-authority proves in zero knowledge that each encrypted count is in range and
-that the encrypted vector sums to the public electorate size of that
-authority. The contract accepts only one such ciphertext vector per authority
-and fixes the complete transcript on-chain. The aggregate is then computed
-homomorphically from the accepted ciphertexts, and only the global final tally
-is decrypted.
+should remain encrypted throughout the protocol}. Each authority publishes an
+encrypted tally vector and a zero-knowledge proof that the hidden tally is
+structurally valid and sums to its public electorate size. The contract accepts
+one such submission per authority, fixes the transcript on-chain, computes the
+homomorphic aggregate, and only the global final tally is decrypted.
 
 Our design is closer to open-audit bulletin board systems such as
 Helios~\cite{USENIX:Adida08} and to multi-authority election
 protocols~\cite{EC:CraGenSch97} than to a ballot-level remote voting stack, but
-it adds three protocol elements that are essential in the private-local-tally
-setting: a proof that each encrypted local tally is structurally valid, an
-on-chain aggregate that is updated from accepted submissions instead of posted
-by a privileged actor, and a proof-checked threshold opening transcript that
-reveals only the final aggregate.
+adds three elements for private local tallies: validity proofs for encrypted
+local results, an on-chain aggregate updated from accepted submissions, and a
+proof-checked threshold opening transcript that reveals only the final
+aggregate.
 
 We use curve-based additive ElGamal rather than Paillier~\cite{EC:Paillier99}
-because the artifact is proof-heavy and therefore benefits from aligning encryption with
-Circom/Groth16 arithmetic. This keeps the zero-knowledge pipeline
-substantially simpler than a Paillier-based alternative. We also remain at the
-local-tally level because the problem addressed here is final aggregation from
-trusted local counts rather than ballot-level remote voting.
+because the artifact is proof-heavy and benefits from aligning encryption with
+Circom/Groth16 arithmetic. We remain at the local-tally level because the
+problem addressed here is final aggregation from trusted local counts, not
+ballot-level remote voting.
 
 The paper specifies a protocol with encrypted local tallies, signed submission
 binding, proof-based acceptance, on-chain homomorphic aggregation, and
 threshold final opening. It also provides a reproducible artifact that
-exercises trustee setup, encrypted tally submission, on-chain aggregation,
-validation of partial decryptions, and final tally recovery. The protocol
-remains narrower than a full remote voting system, but stronger than a
-cleartext local-tally bulletin board.
+exercises trustee setup, encrypted submission, on-chain aggregation, partial
+decryption validation, and final tally recovery.
