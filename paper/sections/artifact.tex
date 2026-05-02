@@ -7,17 +7,17 @@ The companion artifact is available in the public repository%
 \footnote{\url{https://github.com/VincenzoImp/encrypted-local-tally-integrity}.}.
 The repository contains a Solidity contract for authority registration,
 on-chain Groth16 verification, encrypted transcript recording, aggregate
-maintenance, trustee setup, and final opening. It also contains three Circom
-circuits~\cite{circom}: local-tally validity, trustee-registry consistency,
-and partial decryption share validity.
+maintenance, trustee setup, and final opening. Alongside the contract, the
+artifact includes three Circom circuits~\cite{circom}: local-tally validity,
+trustee-registry consistency, and partial decryption share validity.
 
-The artifact's reviewer entry point is \texttt{yarn validate}. The command
-rebuilds circuit artifacts if needed, runs the contract tests, and executes an
+For reviewers, the entry point is \texttt{yarn validate}. The command rebuilds
+circuit artifacts if needed, runs the contract tests, and executes an
 end-to-end replay with three authorities, two candidates, a $2$-of-$3$ trustee
 committee, and a dealer-generated threshold key. The replay generates real
 proofs, submits signed encrypted local tallies, reconstructs the aggregate from
-the transcript, checks it against the on-chain aggregate, and recovers the
-final tally.
+the transcript, compares that value with the on-chain aggregate, and recovers
+the final tally.
 
 The local tallies are never published in clear. The public transcript contains
 only accepted ciphertexts, proof and signature checks, trustee setup,

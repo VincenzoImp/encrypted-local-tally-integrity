@@ -15,7 +15,7 @@ threshold.
 
 \paragraph{Encrypted local tally.}
 Authority~$A_i$ computes off-chain counts
-$(t_{i,1},\dots,t_{i,m})$. Instead of publishing them, it
+$(t_{i,1},\dots,t_{i,m})$. Instead of publishing the counts, the authority
 encrypts each component and obtains a ciphertext vector
 $C_i=(\mathsf{Enc}(t_{i,1}),\dots,\mathsf{Enc}(t_{i,m}))$. Because the
 encryption is additively homomorphic, component-wise aggregation of ciphertexts
@@ -28,7 +28,8 @@ and encryption randomness such that the published ciphertexts encrypt those
 counts, each count is in range, and the sum of the counts equals the public
 electorate size of $A_i$.
 The authority also signs the transcript, binding the election identifier,
-authority address, electorate size, and ciphertext coordinates to the sender.
+authority address, electorate size, and ciphertext coordinates to the
+submitting authority.
 
 \paragraph{On-chain acceptance.}
 The contract accepts exactly one encrypted tally per authorized authority. A
@@ -57,5 +58,5 @@ on-chain.
 \paragraph{Failure handling.}
 If the submission deadline expires before all authorities have posted an
 accepted encrypted tally, the election is cancelled instead of producing a
-partial result. This preserves the invariant that the final result must come
-from the complete accepted set of local tallies.
+partial result. Cancellation preserves the invariant that the final result must
+come from the complete accepted set of local tallies.

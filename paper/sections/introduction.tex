@@ -6,21 +6,23 @@
 We study federated elections in which authorized local authorities conduct
 secret voting and compute local tallies off-chain. Ballot secrecy is
 already enforced locally and local committees are assumed to count correctly.
-The weak point is the transition from local results to the global result: a
-central coordinator can omit unfavorable tallies, misreport the aggregate, or
-exploit early knowledge of partial results.
+The integrity gap in this federated workflow lies in the transition from local
+results to the global result: a central coordinator can omit unfavorable
+tallies, misreport the aggregate, or exploit early knowledge of partial results.
 
 Publishing local tallies on a blockchain makes inclusion auditable but exposes
 local outcomes, which can create retaliation, reputational pressure, or
 strategic bargaining, especially in small electorates. Commit-and-reveal only
-postpones that disclosure and still leaves a final-stage abort surface.
+postpones that disclosure and still leaves an opportunity to abort at the
+opening stage.
 
-This motivates the central design choice of this paper: \emph{the local tally
-should remain encrypted throughout the protocol}. Each authority publishes an
-encrypted tally vector and a zero-knowledge proof that the hidden tally is
-structurally valid and sums to its public electorate size. The contract accepts
-one such submission per authority, fixes the transcript on-chain, computes the
-homomorphic aggregate, and only the global final tally is decrypted.
+This privacy and integrity tension motivates the central design choice of this
+paper: \emph{the local tally should remain encrypted throughout the protocol}.
+Each authority publishes an encrypted tally vector and a zero-knowledge proof
+that the hidden tally is structurally valid and sums to its public electorate
+size. The contract accepts one such submission per authority, fixes the
+transcript on-chain, computes the homomorphic aggregate, and only the global
+tally is decrypted.
 
 Our design is closer to open-audit bulletin board systems such as
 Helios~\cite{USENIX:Adida08} and to multi-authority election

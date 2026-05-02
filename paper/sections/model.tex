@@ -16,7 +16,7 @@ set of accepted local tallies rather than from a coordinator's private view.
 We add one privacy requirement that cleartext bulletin boards do not satisfy:
 local tallies should remain confidential even after the election.
 
-These assumptions define five threats: \emph{omission and replacement} by a
+Within this model, we consider five threats: \emph{omission and replacement} by a
 coordinator; \emph{strategic observation} before the election closes;
 \emph{local retaliation} under cleartext publication; malformed encrypted
 submissions that hide negative, oversized, or wrong-sum tallies; and opening
@@ -28,9 +28,9 @@ tallies are never revealed, only the final aggregate is opened, malformed
 submissions are excluded through zero-knowledge proofs, and trustee setup and
 opening are proof-checked.
 
-The remaining limitations are explicit. A proof of \emph{well-formedness} is
+The protocol has explicit limitations. A proof of \emph{well-formedness} is
 not a proof that the encrypted tally is the \emph{true} local tally, so a
 fully corrupted local committee remains outside scope. The artifact also uses
 a dealer-generated threshold key rather than distributed key generation, and
-final message decoding after threshold opening is performed off-chain through
+final tally decoding after threshold opening is performed off-chain through
 bounded discrete-log recovery.

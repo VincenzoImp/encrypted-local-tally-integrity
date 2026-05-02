@@ -4,12 +4,12 @@
 \section{Discussion}
 
 \paragraph{Origin.}
-The idea comes from the Cryptography track of the 2024 De Cifris/XRPL Commons
-hackathon, whose federated-election scenario had a specific trust gap: local
-committees already preserve ballot secrecy and count local votes, while the
-unresolved risk is the central actor who collects tallies and announces the
-final result. This led us to focus on federation-wide aggregation integrity
-rather than replacing local voting.
+The project originated in the Cryptography track of the 2024 hackathon
+organized by De Cifris and XRPL Commons. The track's federated-election
+scenario highlighted a concrete trust gap: local committees already preserve
+ballot secrecy and count local votes, while a central actor still collects
+tallies and announces the final result. That scenario led us to focus on
+federation-wide aggregation integrity rather than replacing local voting.
 
 \paragraph{Approach.}
 The protocol separates local tallying from public aggregation. Local
@@ -18,12 +18,12 @@ contract accepts one proof-checked submission per authority, maintains the
 homomorphic aggregate, and verifies the threshold-opening transcript before
 the global result is recovered.
 
-\paragraph{Product path.}
-The artifact suggests a practical route for institutional governance systems,
+\paragraph{Deployment path.}
+The artifact shows a practical route toward institutional governance systems,
 provided deployment work adds operational key management, audits, authority
-onboarding, monitoring, and administrator interfaces. The present contribution
-remains a research prototype, but it demonstrates a reproducible workflow for
-private local tallies and verifiable global aggregation.
+onboarding, monitoring, and administrator interfaces. The present
+implementation remains a research prototype, yet demonstrates a reproducible
+workflow for private local tallies and verifiable global aggregation.
 
 \section{Conclusion}
 
