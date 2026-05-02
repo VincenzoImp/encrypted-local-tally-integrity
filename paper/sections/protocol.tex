@@ -48,7 +48,8 @@ aggregate from the accepted authority transcript and compare it with the
 contract-maintained aggregate.
 
 \paragraph{Threshold decryption.}
-Only the aggregate ciphertext is decrypted. For each candidate component,
+Only the aggregate ciphertext is opened. The design follows threshold
+decryption for voting protocols~\cite{FC:FouPouSte00}. For each candidate component,
 trustees publish a share point together with a Groth16 proof that the share is
 consistent with both the trustee's public share and the corresponding
 contract-maintained ciphertext. The contract accepts only verified shares.
